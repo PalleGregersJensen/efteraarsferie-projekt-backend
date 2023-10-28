@@ -1,3 +1,6 @@
+import mysql from "mysql2";
+import "dotenv/config";
+
 const dbConfig = {
   host: process.env.MYSQL_HOST,
   port: process.env.MYSQL_PORT,
@@ -6,7 +9,6 @@ const dbConfig = {
   password: process.env.MYSQL_PASSWORD,
   multipleStatements: true,
 };
-
 
 const connection = mysql.createConnection(dbConfig);
 
