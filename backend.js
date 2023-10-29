@@ -11,17 +11,16 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (request, response) => {
-  response.send("App running")
+  const query = "SELECT * FROM books";
+  connection.query(query, (err, results, fields) => {
+    if (err) {
+      console.log(err);
+    } else {
+      response.json(results);
+    }
+  });
 });
-//   const query = "SELECT * FROM books";
-//   connection.query(query, (err, results, fields) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       response.json(results);
-//     }
-//   });
-// });
+;
 
 app.listen(port, () => {
   console.log(`Server running on port${port}`);
